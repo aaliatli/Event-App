@@ -1,0 +1,1 @@
+2025-07-07 16:52:32.701 +03:00 [INF] Now listening on: http://localhost:5020

@@ -1,14 +1,16 @@
 using System.Diagnostics;
 using MediatR;
+using Serilog;
 
-public class RequestLoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+public class RequestLoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         var requestName = typeof(TRequest).Name;
-        Debug.WriteLine($"[LOG] {requestName} isteği başladı.");
+        Log.Information("[LOG] Loglama başladı.", requestName);
         var response = await next();
-        Debug.WriteLine($"[LOG] {requestName} isteği bitti.");
+        Log.Information("[LOG] loglama bitti", requestName);
         return response;
     }
 }
+
