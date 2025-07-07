@@ -7,9 +7,9 @@ public class RequestLoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRe
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         var requestName = typeof(TRequest).Name;
-        Log.Information("[LOG] Loglama başladı.", requestName);
+        Debug.Write("[LOG] Loglama başladı.", requestName);
         var response = await next();
-        Log.Information("[LOG] loglama bitti", requestName);
+        Debug.Write("[LOG] loglama bitti", requestName);
         return response;
     }
 }
