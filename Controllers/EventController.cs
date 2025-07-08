@@ -44,8 +44,22 @@ public class EventController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(Guid id)
     {
-        return Ok(await _mediator.Send(new GetEventByIdQuery{Id = id}));
+        return Ok(await _mediator.Send(new GetEventByIdQuery { Id = id }));
     }
+    
+    [HttpGet("paged")]
+    public async Task<IActionResult> GetAllPaged([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+    {
+        var query = new GetAllEventsPagedQuery
+        {
+            PageNumber = pageNumber,
+            PageSize = pageSize
+        };
+
+    var result = await _mediator.Send(query);
+    return Ok(result);
+}
+
     
 
 }

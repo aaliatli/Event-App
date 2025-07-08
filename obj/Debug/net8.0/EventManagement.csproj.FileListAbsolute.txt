@@ -189,3 +189,5 @@ C:\Users\ASUS\Desktop\Event Management\EventManagement\bin\Debug\net8.0\Serilog.
 C:\Users\ASUS\Desktop\Event Management\EventManagement\bin\Debug\net8.0\Serilog.Sinks.Console.dll
 C:\Users\ASUS\Desktop\Event Management\EventManagement\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
 C:\Users\ASUS\Desktop\Event Management\EventManagement\bin\Debug\net8.0\Serilog.Sinks.File.dll
+C:\Users\ASUS\Desktop\Event Management\EventManagement\bin\Debug\net8.0\Polly.dll
+C:\Users\ASUS\Desktop\Event Management\EventManagement\bin\Debug\net8.0\Polly.Core.dll
