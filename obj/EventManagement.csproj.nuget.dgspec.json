@@ -93,6 +93,10 @@
               "target": "Package",
               "version": "[9.0.4, )"
             },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.6.1, )"
+            },
             "Serilog": {
               "target": "Package",
               "version": "[4.3.0, )"
