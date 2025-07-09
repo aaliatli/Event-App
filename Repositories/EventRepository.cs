@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class EventRepository : IEventRepository
 {
-    public readonly EventDbContext _context;
+    private readonly EventDbContext _context;
 
     public EventRepository(EventDbContext context)
     {
@@ -46,5 +46,9 @@ public class EventRepository : IEventRepository
         _context.Events.Remove(entity);
         await _context.SaveChangesAsync();
         return true;
+    }
+
+    public async Task<List<Event>> GetSearchedEvents(){
+        return await _context.Events.ToListAsync();
     }
 } 

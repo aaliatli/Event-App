@@ -25,6 +25,7 @@ builder.Services.AddMediatR(typeof(Program).Assembly);
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestLoggingBehavior<,>));
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CacheBehavior<,>));
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RetryBehavior<,>));
 
 builder.Services.AddMemoryCache();
 
