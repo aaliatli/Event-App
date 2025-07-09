@@ -3,7 +3,7 @@ using MediatR;
 
 public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Unit>
 {
-    public readonly IEventRepository _repository;
+    private readonly IEventRepository _repository;
 
     public CreateEventCommandHandler(IEventRepository repository)
     {
@@ -19,7 +19,7 @@ public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Uni
             Location = request.Location,
             StartDate = request.StartDate,
             EndDate = request.EndDate,
-            Capacity = request.Capacity
+            Capacity = request.Capacity,
 
         };
         await _repository.AddAsync(newEvent);

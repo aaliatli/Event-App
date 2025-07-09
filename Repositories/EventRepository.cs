@@ -47,4 +47,8 @@ public class EventRepository : IEventRepository
         await _context.SaveChangesAsync();
         return true;
     }
+
+    public async Task<List<Event>> GetSearchedEvents(){
+        return await _context.Events.ToListAsync();
+    }
 } 

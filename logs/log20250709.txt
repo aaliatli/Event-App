@@ -1,0 +1,24 @@
+2025-07-09 14:48:41.515 +03:00 [INF] Now listening on: http://localhost:5020
+2025-07-09 14:48:41.650 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-09 14:48:41.660 +03:00 [INF] Hosting environment: Development
+2025-07-09 14:48:41.663 +03:00 [INF] Content root path: C:\Users\ASUS\Desktop\Event Management\EventManagement
+2025-07-09 14:48:44.857 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/ - null null
+2025-07-09 14:48:44.966 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-09 14:48:44.982 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/ - 404 0 null 129.501ms
+2025-07-09 14:48:45.089 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5020/, Response status code: 404
+2025-07-09 14:49:29.208 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/api/event/search?keyword=bursa - null null
+2025-07-09 14:49:29.228 +03:00 [INF] Executing endpoint 'EventController.Search (EventManagement)'
+2025-07-09 14:49:29.287 +03:00 [INF] Route matched with {action = "Search", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller EventController (EventManagement).
+2025-07-09 14:49:29.352 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-09 14:49:31.293 +03:00 [INF] Executed DbCommand (119ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[id], [e].[Capacity], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title]
+FROM [Events] AS [e]
+2025-07-09 14:49:31.462 +03:00 [INF] [LOG] loglama bitti
+2025-07-09 14:49:31.504 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagement.Models.Event, EventManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-09 14:49:31.656 +03:00 [INF] Executed action EventController.Search (EventManagement) in 2360.3806ms
+2025-07-09 14:49:31.658 +03:00 [INF] Executed endpoint 'EventController.Search (EventManagement)'
+2025-07-09 14:49:31.720 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/api/event/search?keyword=bursa - 200 null application/json; charset=utf-8 2512.6158ms
+2025-07-09 14:49:31.760 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/favicon.ico - null null
+2025-07-09 14:49:31.769 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/favicon.ico - 404 0 null 9.0351ms
+2025-07-09 14:49:31.773 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5020/favicon.ico, Response status code: 404
+2025-07-09 14:49:44.048 +03:00 [INF] Application is shutting down...

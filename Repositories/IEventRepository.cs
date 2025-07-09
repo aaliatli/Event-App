@@ -8,4 +8,5 @@ public interface IEventRepository
     Task<List<string>> GetCurrentEventsAsync();
     Task<Event> GetEventById(Guid Id);
     Task<bool> DeleteAsync(Guid id);
+    Task<List<Event>> GetSearchedEvents();
 }
