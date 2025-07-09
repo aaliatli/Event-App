@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class EventRepository : IEventRepository
 {
-    public readonly EventDbContext _context;
+    private readonly EventDbContext _context;
 
     public EventRepository(EventDbContext context)
     {
