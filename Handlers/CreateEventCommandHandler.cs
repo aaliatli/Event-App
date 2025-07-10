@@ -1,13 +1,16 @@
 using EventManagement.Models;
 using MediatR;
+using Microsoft.Extensions.Caching.Memory;
 
 public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Unit>
 {
     private readonly IEventRepository _repository;
+    private readonly IMemoryCache _cache;
 
-    public CreateEventCommandHandler(IEventRepository repository)
+    public CreateEventCommandHandler(IEventRepository repository, IMemoryCache cache)
     {
         _repository = repository;
+        _cache = cache;
     }
 
     public async Task<Unit> Handle(CreateEventCommand request, CancellationToken cancellationToken)
@@ -23,6 +26,10 @@ public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Uni
 
         };
         await _repository.AddAsync(newEvent);
+        
+        _cache.Remove("GetAllEvents");
+        System.Console.WriteLine("[CACHE] Yeni event eklendi, cache temizlendi.");
+
         return Unit.Value;
     }
 

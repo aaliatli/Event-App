@@ -9,8 +9,15 @@ public class GetAllEventQueryHandler : IRequestHandler<GetAllEventsQuery, List<s
         _repository = repository;
     }
 
-    public async Task<List<string>> Handle(GetAllEventsQuery request, CancellationToken cancellationToken) {
-        return await _repository.GetAllEventsAsync();
+    public async Task<List<string>> Handle(GetAllEventsQuery request, CancellationToken cancellationToken)
+    {
+        var events = await _repository.GetAllEventsAsync();
+        if (events == null || !events.Any())
+        {
+            System.Console.WriteLine("[HANDLER] Veri bulunamadı.");
+            throw new Exception("Db' den veri çekme hatası");
+        }
+        return events;
     }
  
 }
