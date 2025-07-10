@@ -3,6 +3,6 @@ using MediatR;
 
 public class GetAllEventsQuery : IRequest<List<string>>, ICacheable
 {
-    public string CacheKey => "all-events";
+    public string CacheKey => "GetAllEvents";
     public int CacheDuration => 10;
 }
