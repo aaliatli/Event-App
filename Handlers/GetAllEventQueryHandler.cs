@@ -17,6 +17,7 @@ public class GetAllEventQueryHandler : IRequestHandler<GetAllEventsQuery, List<s
             System.Console.WriteLine("[HANDLER] Veri bulunamadı.");
             throw new Exception("Db' den veri çekme hatası");
         }
+        
         return events;
     }
  

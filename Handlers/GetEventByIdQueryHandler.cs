@@ -12,6 +12,11 @@ public class GetEventByIdQueryHandler : IRequestHandler<GetEventByIdQuery, Event
 
     public async Task<Event> Handle(GetEventByIdQuery request, CancellationToken cancellationToken)
     {
-        return await _repository.GetEventById(request.Id);
+        var eventById = await _repository.GetEventById(request.Id);
+        if (eventById == null)
+        {
+            throw new Exception("ID ile getirilecek veri bulunamadı.");
+        }
+        return eventById;
     }
 }

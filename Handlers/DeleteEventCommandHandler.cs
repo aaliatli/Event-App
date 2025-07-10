@@ -14,11 +14,13 @@ public class DeleteEventCommandHandler : IRequestHandler<DeleteEventCommand, boo
     public async Task<bool> Handle(DeleteEventCommand request, CancellationToken cancellationToken)
     {
         var deletedEvent = await _repository.DeleteAsync(request.Id);
-        if (deletedEvent)
+        if (!deletedEvent)
         {
-            _cache.Remove("GetAllEvents");
-            System.Console.WriteLine("[CACHE] Event silindiği için cache temizlendi.");
+            System.Console.WriteLine("[HANDLER] Veri silme hatası.");
+            throw new Exception("Veri silinemedi.");
         }
+        _cache.Remove("GetAllEvents");
+        System.Console.WriteLine("[CACHE] Event silindiği için cache temizlendi.");
         return deletedEvent;
     }
 }
