@@ -32,6 +32,9 @@ builder.Services.AddMemoryCache();
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
 builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

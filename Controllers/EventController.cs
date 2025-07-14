@@ -3,16 +3,24 @@ using EventManagement.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
+
 
 [Route("api/[controller]")]
 [ApiController]
 public class EventController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private static List<UserEvent> _userEvents = new();
+    private const int Capacity = 50;
+    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly EventDbContext _context;
 
-    public EventController(IMediator mediator)
+    public EventController(IMediator mediator, IHttpClientFactory httpClientFactory, EventDbContext context)
     {
         _mediator = mediator;
+        _httpClientFactory = httpClientFactory;
+        _context = context;
     }
 
     [HttpPost("create")]
@@ -65,6 +73,40 @@ public class EventController : ControllerBase
         var result = await _mediator.Send(new SearchEventQuery(keyword));
         return Ok(result);
     }
-    
+
+    [HttpPost("register-to-event")]
+    public async Task<IActionResult> RegisterToEvent(Guid userId, Guid eventId){
+        var client = _httpClientFactory.CreateClient();
+        var response = await client.GetAsync($"http://localhost:5020/api/User/{userId}");
+        var user = await response.Content.ReadFromJsonAsync<User>();
+
+        if(!response.IsSuccessStatusCode){
+            return NotFound("Kullanıcı bulunamadı");
+        }
+
+        var eventEntity = await _mediator.Send(new GetEventByIdQuery {Id = eventId});
+        if(eventEntity == null){
+            return NotFound("Etkinlik bulunamadı.");
+        }
+
+        var userEventCount = await _context.UserEvents.CountAsync(ue => ue.EventId == eventId);
+        if(userEventCount > eventEntity.Capacity){
+            return BadRequest("Etkinlik kapasitesi dolmuş.");
+        }
+
+        if(eventEntity.AgeRestriction > 0 && user.Age< eventEntity.AgeRestriction){
+            return BadRequest($"Bu etkinlik için minimum yaş sınırı: {eventEntity.AgeRestriction}");
+        }
+
+        var userEvent = new UserEvent{
+            UserId = userId, 
+            EventId = eventId
+        };
+
+        _context.UserEvents.Add(userEvent);
+        await _context.SaveChangesAsync();
+
+        return Ok("Etkinliğe kayıt olundu. ");
+    }
 
 }

@@ -7,4 +7,5 @@ public class CreateEventCommand : IRequest<Unit>
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public int Capacity { get; set; }
+    public int AgeRestriction {get; set;} = 0;
 }
