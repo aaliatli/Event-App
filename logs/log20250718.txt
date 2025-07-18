@@ -1,0 +1,5 @@
+2025-07-18 15:08:18.337 +03:00 [INF] Now listening on: http://localhost:5020
+2025-07-18 15:08:18.390 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-18 15:08:18.392 +03:00 [INF] Hosting environment: Development
+2025-07-18 15:08:18.392 +03:00 [INF] Content root path: C:\Users\ASUS\Desktop\Event Management\EventManagement
+2025-07-18 15:08:21.061 +03:00 [INF] Application is shutting down...

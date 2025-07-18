@@ -239,3 +239,508 @@ VALUES (N'20250714164946_InitialCreate', N'9.0.6');
 DECLARE @result int;
 EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
 SELECT @result
+2025-07-14 19:50:27.012 +03:00 [INF] Now listening on: http://localhost:5020
+2025-07-14 19:50:27.050 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 19:50:27.051 +03:00 [INF] Hosting environment: Development
+2025-07-14 19:50:27.052 +03:00 [INF] Content root path: C:\Users\ASUS\Desktop\Event Management\EventManagement
+2025-07-14 19:50:31.266 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/swagger/index.html - null null
+2025-07-14 19:50:31.444 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/swagger/index.html - 200 null text/html;charset=utf-8 178.9866ms
+2025-07-14 19:50:31.626 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/swagger/v1/swagger.json - null null
+2025-07-14 19:50:31.875 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 249.975ms
+2025-07-14 19:50:32.692 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/api/event/a4e42f31-3a59-4957-97f0-8086797b6c43 - null null
+2025-07-14 19:50:32.712 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-14 19:50:32.722 +03:00 [INF] Executing endpoint 'EventController.GetById (EventManagement)'
+2025-07-14 19:50:32.753 +03:00 [INF] Route matched with {action = "GetById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(System.Guid) on controller EventController (EventManagement).
+2025-07-14 19:50:32.890 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:50:34.205 +03:00 [INF] Executed DbCommand (44ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AgeRestriction], [e].[Capacity], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title]
+FROM [Events] AS [e]
+WHERE [e].[Id] = @__p_0
+2025-07-14 19:50:34.756 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AgeRestriction], [e].[Capacity], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title]
+FROM [Events] AS [e]
+WHERE [e].[Id] = @__p_0
+2025-07-14 19:50:35.267 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AgeRestriction], [e].[Capacity], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title]
+FROM [Events] AS [e]
+WHERE [e].[Id] = @__p_0
+2025-07-14 19:50:35.783 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AgeRestriction], [e].[Capacity], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title]
+FROM [Events] AS [e]
+WHERE [e].[Id] = @__p_0
+2025-07-14 19:50:35.820 +03:00 [INF] Executed action EventController.GetById (EventManagement) in 3062.1497ms
+2025-07-14 19:50:35.821 +03:00 [INF] Executed endpoint 'EventController.GetById (EventManagement)'
+2025-07-14 19:50:35.826 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: ID ile getirilecek veri bulunamadı.
+   at GetEventByIdQueryHandler.Handle(GetEventByIdQuery request, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Handlers\GetEventByIdQueryHandler.cs:line 18
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, CancellationToken cancellationToken, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteInternalAsync[TResult](Func`3 action, Context context, Boolean continueOnCapturedContext, CancellationToken cancellationToken)
+   at RetryBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Behaviors\RetryBehavior.cs:line 16
+   at RequestValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Behaviors\RequestValidationBehavior.cs:line 26
+   at RequestLoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Behaviors\RequestLoggingBehavior.cs:line 11
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at EventController.GetById(Guid id) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Controllers\EventController.cs:line 55
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 19:50:35.920 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/api/event/a4e42f31-3a59-4957-97f0-8086797b6c43 - 500 null text/html; charset=utf-8 3228.1386ms
+2025-07-14 19:51:03.055 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5020/api/Event/create - application/json 171
+2025-07-14 19:51:03.060 +03:00 [INF] Executing endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:51:03.073 +03:00 [INF] Route matched with {action = "Create", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CreateEventCommand) on controller EventController (EventManagement).
+2025-07-14 19:51:03.145 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:51:03.175 +03:00 [INF] Executed action EventController.Create (EventManagement) in 100.875ms
+2025-07-14 19:51:03.176 +03:00 [INF] Executed endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:51:03.177 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+FluentValidation.ValidationException: Validation failed: 
+ -- EndDate: Bitiş tarhi başlangıç tarihinden önce olamaz. Severity: Error
+   at RequestValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Behaviors\RequestValidationBehavior.cs:line 22
+   at RequestLoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Behaviors\RequestLoggingBehavior.cs:line 11
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at EventController.Create(CreateEventCommand command) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Controllers\EventController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 19:51:03.185 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5020/api/Event/create - 500 null text/plain; charset=utf-8 130.0788ms
+2025-07-14 19:51:16.600 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5020/api/Event/create - application/json 171
+2025-07-14 19:51:16.602 +03:00 [INF] Executing endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:51:16.605 +03:00 [INF] Route matched with {action = "Create", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CreateEventCommand) on controller EventController (EventManagement).
+2025-07-14 19:51:16.629 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:51:16.631 +03:00 [INF] Executed action EventController.Create (EventManagement) in 20.4547ms
+2025-07-14 19:51:16.632 +03:00 [INF] Executed endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:51:16.633 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+FluentValidation.ValidationException: Validation failed: 
+ -- EndDate: Bitiş tarhi başlangıç tarihinden önce olamaz. Severity: Error
+   at RequestValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Behaviors\RequestValidationBehavior.cs:line 22
+   at RequestLoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Behaviors\RequestLoggingBehavior.cs:line 11
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at EventController.Create(CreateEventCommand command) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Controllers\EventController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 19:51:16.647 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5020/api/Event/create - 500 null text/plain; charset=utf-8 47.5294ms
+2025-07-14 19:51:22.413 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5020/api/Event/create - application/json 171
+2025-07-14 19:51:22.416 +03:00 [INF] Executing endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:51:22.418 +03:00 [INF] Route matched with {action = "Create", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CreateEventCommand) on controller EventController (EventManagement).
+2025-07-14 19:51:22.424 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:51:22.427 +03:00 [INF] Executed action EventController.Create (EventManagement) in 6.732ms
+2025-07-14 19:51:22.432 +03:00 [INF] Executed endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:51:22.438 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+FluentValidation.ValidationException: Validation failed: 
+ -- EndDate: Bitiş tarhi başlangıç tarihinden önce olamaz. Severity: Error
+   at RequestValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Behaviors\RequestValidationBehavior.cs:line 22
+   at RequestLoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Behaviors\RequestLoggingBehavior.cs:line 11
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at EventController.Create(CreateEventCommand command) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Controllers\EventController.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 19:51:22.448 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5020/api/Event/create - 500 null text/plain; charset=utf-8 34.3997ms
+2025-07-14 19:51:58.357 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5020/api/Event/create - application/json 171
+2025-07-14 19:51:58.376 +03:00 [INF] Executing endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:51:58.387 +03:00 [INF] Route matched with {action = "Create", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CreateEventCommand) on controller EventController (EventManagement).
+2025-07-14 19:51:58.390 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:51:58.568 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Events] ([Id], [AgeRestriction], [Capacity], [EndDate], [Location], [StartDate], [Title])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-07-14 19:51:58.581 +03:00 [INF] [LOG] loglama bitti
+2025-07-14 19:51:58.589 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-14 19:51:58.591 +03:00 [INF] Executed action EventController.Create (EventManagement) in 201.9551ms
+2025-07-14 19:51:58.592 +03:00 [INF] Executed endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:51:58.593 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5020/api/Event/create - 200 null text/plain; charset=utf-8 235.9966ms
+2025-07-14 19:52:22.502 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5020/api/Event/create - application/json 168
+2025-07-14 19:52:22.506 +03:00 [INF] Executing endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:52:22.507 +03:00 [INF] Route matched with {action = "Create", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CreateEventCommand) on controller EventController (EventManagement).
+2025-07-14 19:52:22.513 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:52:22.587 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Events] ([Id], [AgeRestriction], [Capacity], [EndDate], [Location], [StartDate], [Title])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-07-14 19:52:22.589 +03:00 [INF] [LOG] loglama bitti
+2025-07-14 19:52:22.590 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-14 19:52:22.592 +03:00 [INF] Executed action EventController.Create (EventManagement) in 81.8488ms
+2025-07-14 19:52:22.594 +03:00 [INF] Executed endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:52:22.595 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5020/api/Event/create - 200 null text/plain; charset=utf-8 92.9376ms
+2025-07-14 19:52:39.829 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5020/api/Event/create - application/json 169
+2025-07-14 19:52:39.851 +03:00 [INF] Executing endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:52:39.851 +03:00 [INF] Route matched with {action = "Create", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CreateEventCommand) on controller EventController (EventManagement).
+2025-07-14 19:52:39.856 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:52:39.869 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Events] ([Id], [AgeRestriction], [Capacity], [EndDate], [Location], [StartDate], [Title])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-07-14 19:52:39.871 +03:00 [INF] [LOG] loglama bitti
+2025-07-14 19:52:39.872 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-14 19:52:39.873 +03:00 [INF] Executed action EventController.Create (EventManagement) in 18.4719ms
+2025-07-14 19:52:39.880 +03:00 [INF] Executed endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:52:39.881 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5020/api/Event/create - 200 null text/plain; charset=utf-8 51.6792ms
+2025-07-14 19:52:50.142 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/api/Event/all - null null
+2025-07-14 19:52:50.146 +03:00 [INF] Executing endpoint 'EventController.GetAll (EventManagement)'
+2025-07-14 19:52:50.157 +03:00 [INF] Route matched with {action = "GetAll", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller EventController (EventManagement).
+2025-07-14 19:52:50.161 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:52:50.192 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Title]
+FROM [Events] AS [e]
+2025-07-14 19:52:50.203 +03:00 [INF] [LOG] loglama bitti
+2025-07-14 19:52:50.204 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 19:52:50.214 +03:00 [INF] Executed action EventController.GetAll (EventManagement) in 54.6352ms
+2025-07-14 19:52:50.219 +03:00 [INF] Executed endpoint 'EventController.GetAll (EventManagement)'
+2025-07-14 19:52:50.220 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/api/Event/all - 200 null application/json; charset=utf-8 77.9888ms
+2025-07-14 19:53:50.458 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5020/api/User/add-user - application/json 93
+2025-07-14 19:53:50.474 +03:00 [INF] Executing endpoint 'UserController.UserRegister (EventManagement)'
+2025-07-14 19:53:50.485 +03:00 [INF] Route matched with {action = "UserRegister", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UserRegister(CreateUserCommand) on controller UserController (EventManagement).
+2025-07-14 19:53:50.494 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:53:50.520 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [Age], [LastName], [Mail], [Name], [Password])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-14 19:53:50.526 +03:00 [INF] [LOG] loglama bitti
+2025-07-14 19:53:50.527 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-14 19:53:50.529 +03:00 [INF] Executed action UserController.UserRegister (EventManagement) in 42.2038ms
+2025-07-14 19:53:50.534 +03:00 [INF] Executed endpoint 'UserController.UserRegister (EventManagement)'
+2025-07-14 19:53:50.536 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5020/api/User/add-user - 200 null text/plain; charset=utf-8 77.5426ms
+2025-07-14 19:54:12.050 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5020/api/User/add-user - application/json 93
+2025-07-14 19:54:12.054 +03:00 [INF] Executing endpoint 'UserController.UserRegister (EventManagement)'
+2025-07-14 19:54:12.055 +03:00 [INF] Route matched with {action = "UserRegister", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UserRegister(CreateUserCommand) on controller UserController (EventManagement).
+2025-07-14 19:54:12.064 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:54:12.075 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [Age], [LastName], [Mail], [Name], [Password])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-14 19:54:12.077 +03:00 [INF] [LOG] loglama bitti
+2025-07-14 19:54:12.078 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-14 19:54:12.079 +03:00 [INF] Executed action UserController.UserRegister (EventManagement) in 21.7408ms
+2025-07-14 19:54:12.080 +03:00 [INF] Executed endpoint 'UserController.UserRegister (EventManagement)'
+2025-07-14 19:54:12.081 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5020/api/User/add-user - 200 null text/plain; charset=utf-8 31.0299ms
+2025-07-14 19:54:51.819 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5020/api/Event/register-to-event?userId=27DD1B0B-0449-468D-B82E-9A4E1217513B&eventId=77C517E5-6446-4282-BA4D-40A6D292F3CA - null 0
+2025-07-14 19:54:51.823 +03:00 [INF] Executing endpoint 'EventController.RegisterToEvent (EventManagement)'
+2025-07-14 19:54:51.828 +03:00 [INF] Route matched with {action = "RegisterToEvent", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterToEvent(System.Guid, System.Guid) on controller EventController (EventManagement).
+2025-07-14 19:54:51.857 +03:00 [INF] Start processing HTTP request GET http://localhost:5020/api/User/27dd1b0b-0449-468d-b82e-9a4e1217513b
+2025-07-14 19:54:51.861 +03:00 [INF] Sending HTTP request GET http://localhost:5020/api/User/27dd1b0b-0449-468d-b82e-9a4e1217513b
+2025-07-14 19:54:51.914 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/api/User/27dd1b0b-0449-468d-b82e-9a4e1217513b - null null
+2025-07-14 19:54:51.916 +03:00 [INF] Executing endpoint 'UserController.GetUserById (EventManagement)'
+2025-07-14 19:54:51.919 +03:00 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller UserController (EventManagement).
+2025-07-14 19:54:51.922 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:54:51.946 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Age], [u].[LastName], [u].[Mail], [u].[Name], [u].[Password]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__request_Id_0
+2025-07-14 19:54:51.950 +03:00 [INF] [LOG] loglama bitti
+2025-07-14 19:54:51.952 +03:00 [INF] Executing OkObjectResult, writing value of type 'User'.
+2025-07-14 19:54:51.962 +03:00 [INF] Executed action UserController.GetUserById (EventManagement) in 41.7611ms
+2025-07-14 19:54:51.966 +03:00 [INF] Executed endpoint 'UserController.GetUserById (EventManagement)'
+2025-07-14 19:54:51.967 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/api/User/27dd1b0b-0449-468d-b82e-9a4e1217513b - 200 null application/json; charset=utf-8 53.1291ms
+2025-07-14 19:54:51.970 +03:00 [INF] Received HTTP response headers after 105.1541ms - 200
+2025-07-14 19:54:51.972 +03:00 [INF] End processing HTTP request after 115.7923ms - 200
+2025-07-14 19:54:51.981 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:54:51.986 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AgeRestriction], [e].[Capacity], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title]
+FROM [Events] AS [e]
+WHERE [e].[Id] = @__p_0
+2025-07-14 19:54:51.989 +03:00 [INF] [LOG] loglama bitti
+2025-07-14 19:54:52.014 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__eventId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [UserEvents] AS [u]
+WHERE [u].[EventId] = @__eventId_0
+2025-07-14 19:54:52.046 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserEvents] ([EventId], [UserId])
+VALUES (@p0, @p1);
+2025-07-14 19:54:52.050 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-14 19:54:52.051 +03:00 [INF] Executed action EventController.RegisterToEvent (EventManagement) in 219.1663ms
+2025-07-14 19:54:52.051 +03:00 [INF] Executed endpoint 'EventController.RegisterToEvent (EventManagement)'
+2025-07-14 19:54:52.052 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5020/api/Event/register-to-event?userId=27DD1B0B-0449-468D-B82E-9A4E1217513B&eventId=77C517E5-6446-4282-BA4D-40A6D292F3CA - 200 null text/plain; charset=utf-8 233.2905ms
+2025-07-14 19:56:42.355 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5020/api/Event/create - application/json 185
+2025-07-14 19:56:42.357 +03:00 [INF] Executing endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:56:42.358 +03:00 [INF] Route matched with {action = "Create", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CreateEventCommand) on controller EventController (EventManagement).
+2025-07-14 19:56:42.360 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:56:42.379 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Events] ([Id], [AgeRestriction], [Capacity], [EndDate], [Location], [StartDate], [Title])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-07-14 19:56:42.382 +03:00 [INF] [LOG] loglama bitti
+2025-07-14 19:56:42.383 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-14 19:56:42.384 +03:00 [INF] Executed action EventController.Create (EventManagement) in 24.5528ms
+2025-07-14 19:56:42.385 +03:00 [INF] Executed endpoint 'EventController.Create (EventManagement)'
+2025-07-14 19:56:42.386 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5020/api/Event/create - 200 null text/plain; charset=utf-8 31.6241ms
+2025-07-14 19:57:03.278 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5020/api/Event/register-to-event?userId=27DD1B0B-0449-468D-B82E-9A4E1217513B&eventId=77C517E5-6446-4282-BA4D-40A6D292F3CA - null 0
+2025-07-14 19:57:03.280 +03:00 [INF] Executing endpoint 'EventController.RegisterToEvent (EventManagement)'
+2025-07-14 19:57:03.281 +03:00 [INF] Route matched with {action = "RegisterToEvent", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterToEvent(System.Guid, System.Guid) on controller EventController (EventManagement).
+2025-07-14 19:57:03.287 +03:00 [INF] Start processing HTTP request GET http://localhost:5020/api/User/27dd1b0b-0449-468d-b82e-9a4e1217513b
+2025-07-14 19:57:03.290 +03:00 [INF] Sending HTTP request GET http://localhost:5020/api/User/27dd1b0b-0449-468d-b82e-9a4e1217513b
+2025-07-14 19:57:03.306 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/api/User/27dd1b0b-0449-468d-b82e-9a4e1217513b - null null
+2025-07-14 19:57:03.308 +03:00 [INF] Executing endpoint 'UserController.GetUserById (EventManagement)'
+2025-07-14 19:57:03.309 +03:00 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller UserController (EventManagement).
+2025-07-14 19:57:03.312 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:57:03.315 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Age], [u].[LastName], [u].[Mail], [u].[Name], [u].[Password]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__request_Id_0
+2025-07-14 19:57:03.320 +03:00 [INF] [LOG] loglama bitti
+2025-07-14 19:57:03.321 +03:00 [INF] Executing OkObjectResult, writing value of type 'User'.
+2025-07-14 19:57:03.322 +03:00 [INF] Executed action UserController.GetUserById (EventManagement) in 11.4685ms
+2025-07-14 19:57:03.322 +03:00 [INF] Received HTTP response headers after 27.4229ms - 200
+2025-07-14 19:57:03.323 +03:00 [INF] Executed endpoint 'UserController.GetUserById (EventManagement)'
+2025-07-14 19:57:03.324 +03:00 [INF] End processing HTTP request after 37.4001ms - 200
+2025-07-14 19:57:03.325 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/api/User/27dd1b0b-0449-468d-b82e-9a4e1217513b - 200 null application/json; charset=utf-8 19.1201ms
+2025-07-14 19:57:03.326 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:57:03.330 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AgeRestriction], [e].[Capacity], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title]
+FROM [Events] AS [e]
+WHERE [e].[Id] = @__p_0
+2025-07-14 19:57:03.332 +03:00 [INF] [LOG] loglama bitti
+2025-07-14 19:57:03.340 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__eventId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [UserEvents] AS [u]
+WHERE [u].[EventId] = @__eventId_0
+2025-07-14 19:57:03.352 +03:00 [ERR] Failed executing DbCommand (7ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserEvents] ([EventId], [UserId])
+VALUES (@p0, @p1);
+2025-07-14 19:57:03.365 +03:00 [ERR] An exception occurred in the database while saving changes for context type 'EventManagement.Data.EventDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_UserEvents'. Cannot insert duplicate key in object 'dbo.UserEvents'. The duplicate key value is (27dd1b0b-0449-468d-b82e-9a4e1217513b, 77c517e5-6446-4282-ba4d-40a6d292f3ca).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:27cc0984-0343-45db-9df0-6b5f6c987c68
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_UserEvents'. Cannot insert duplicate key in object 'dbo.UserEvents'. The duplicate key value is (27dd1b0b-0449-468d-b82e-9a4e1217513b, 77c517e5-6446-4282-ba4d-40a6d292f3ca).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:27cc0984-0343-45db-9df0-6b5f6c987c68
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-07-14 19:57:03.374 +03:00 [INF] Executed action EventController.RegisterToEvent (EventManagement) in 90.0335ms
+2025-07-14 19:57:03.375 +03:00 [INF] Executed endpoint 'EventController.RegisterToEvent (EventManagement)'
+2025-07-14 19:57:03.376 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_UserEvents'. Cannot insert duplicate key in object 'dbo.UserEvents'. The duplicate key value is (27dd1b0b-0449-468d-b82e-9a4e1217513b, 77c517e5-6446-4282-ba4d-40a6d292f3ca).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:27cc0984-0343-45db-9df0-6b5f6c987c68
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at EventController.RegisterToEvent(Guid userId, Guid eventId) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Controllers\EventController.cs:line 107
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 19:57:03.387 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5020/api/Event/register-to-event?userId=27DD1B0B-0449-468D-B82E-9A4E1217513B&eventId=77C517E5-6446-4282-BA4D-40A6D292F3CA - 500 null text/plain; charset=utf-8 108.9008ms
+2025-07-14 19:58:18.061 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/api/event/a4e42f31-3a59-4957-97f0-8086797b6c43 - null null
+2025-07-14 19:58:18.063 +03:00 [INF] Executing endpoint 'EventController.GetById (EventManagement)'
+2025-07-14 19:58:18.064 +03:00 [INF] Route matched with {action = "GetById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(System.Guid) on controller EventController (EventManagement).
+2025-07-14 19:58:18.066 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:58:18.082 +03:00 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AgeRestriction], [e].[Capacity], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title]
+FROM [Events] AS [e]
+WHERE [e].[Id] = @__p_0
+2025-07-14 19:58:18.597 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AgeRestriction], [e].[Capacity], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title]
+FROM [Events] AS [e]
+WHERE [e].[Id] = @__p_0
+2025-07-14 19:58:19.112 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AgeRestriction], [e].[Capacity], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title]
+FROM [Events] AS [e]
+WHERE [e].[Id] = @__p_0
+2025-07-14 19:58:19.631 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AgeRestriction], [e].[Capacity], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title]
+FROM [Events] AS [e]
+WHERE [e].[Id] = @__p_0
+2025-07-14 19:58:19.641 +03:00 [INF] Executed action EventController.GetById (EventManagement) in 1575.2039ms
+2025-07-14 19:58:19.650 +03:00 [INF] Executed endpoint 'EventController.GetById (EventManagement)'
+2025-07-14 19:58:19.654 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: ID ile getirilecek veri bulunamadı.
+   at GetEventByIdQueryHandler.Handle(GetEventByIdQuery request, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Handlers\GetEventByIdQueryHandler.cs:line 18
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, CancellationToken cancellationToken, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteInternalAsync[TResult](Func`3 action, Context context, Boolean continueOnCapturedContext, CancellationToken cancellationToken)
+   at RetryBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Behaviors\RetryBehavior.cs:line 16
+   at RequestValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Behaviors\RequestValidationBehavior.cs:line 26
+   at RequestLoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Behaviors\RequestLoggingBehavior.cs:line 11
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at EventController.GetById(Guid id) in C:\Users\ASUS\Desktop\Event Management\EventManagement\Controllers\EventController.cs:line 55
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 19:58:19.691 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/api/event/a4e42f31-3a59-4957-97f0-8086797b6c43 - 500 null text/html; charset=utf-8 1629.9971ms
+2025-07-14 19:58:24.484 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/api/event/ - null null
+2025-07-14 19:58:24.487 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/api/event/ - 404 0 null 3.2686ms
+2025-07-14 19:58:24.514 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5020/api/event/, Response status code: 404
+2025-07-14 19:58:29.924 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5020/api/event/search?keyword=izmir - null null
+2025-07-14 19:58:29.927 +03:00 [INF] Executing endpoint 'EventController.Search (EventManagement)'
+2025-07-14 19:58:29.943 +03:00 [INF] Route matched with {action = "Search", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller EventController (EventManagement).
+2025-07-14 19:58:29.951 +03:00 [INF] [LOG] Loglama başladı.
+2025-07-14 19:58:29.966 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[AgeRestriction], [e].[Capacity], [e].[EndDate], [e].[Location], [e].[StartDate], [e].[Title]
+FROM [Events] AS [e]
+2025-07-14 19:58:29.979 +03:00 [INF] [LOG] loglama bitti
+2025-07-14 19:58:29.992 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagement.Models.Event, EventManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-14 19:58:29.999 +03:00 [INF] Executed action EventController.Search (EventManagement) in 54.2656ms
+2025-07-14 19:58:30.000 +03:00 [INF] Executed endpoint 'EventController.Search (EventManagement)'
+2025-07-14 19:58:30.003 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5020/api/event/search?keyword=izmir - 200 null application/json; charset=utf-8 78.6765ms
