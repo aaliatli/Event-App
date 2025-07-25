@@ -23,7 +23,9 @@ public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Uni
             StartDate = request.StartDate,
             EndDate = request.EndDate,
             Capacity = request.Capacity,
-            AgeRestriction = request.AgeRestriction > 0 ? request.AgeRestriction : 0
+            AgeRestriction = request.AgeRestriction > 0 ? request.AgeRestriction : 0,
+            CreatorUserId = request.CreatorUserId
+
         };
         
         await _repository.AddAsync(newEvent);

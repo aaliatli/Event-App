@@ -6,6 +6,6 @@ public class User
     public int Age { get; set; }
     public string Mail { get; set; }
     public string Password { get; set; }
-    public ICollection<UserEvent> UserEvents { get; set; }
+    public ICollection<UserEvent> UserEvents { get; set; } = new List<UserEvent>();
 
 }

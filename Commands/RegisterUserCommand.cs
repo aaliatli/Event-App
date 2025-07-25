@@ -1,6 +1,6 @@
 using MediatR;
 
-public class CreateUserCommand : IRequest<Unit>{
+public class RegisterUserCommand : IRequest<Unit>{
     public string Name {get; set;}
     public string LastName {get; set;}
     public int Age {get; set;}

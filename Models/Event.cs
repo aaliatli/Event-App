@@ -11,6 +11,8 @@ public class Event
     public DateTime EndDate { get; set; }
     public int Capacity { get; set; }
     public int AgeRestriction {get; set;}
+    public Guid CreatorUserId{ get; set; }
+    public bool IsDeleted { get; set; } = false;
     public string SearchText => $"{Title}{Location}{StartDate:dd-MM-yyyy}{EndDate:dd-MM-yyyy}{Capacity}";
-    public ICollection <UserEvent> UserEvents { get; set; }
+    public ICollection <UserEvent> UserEvents { get; set; } = new List<UserEvent>();
 }

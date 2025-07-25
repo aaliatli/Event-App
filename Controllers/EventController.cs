@@ -1,9 +1,11 @@
 using EventManagement.Data;
 using EventManagement.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Http;
+using System.Security.Claims;
 
 
 [Route("api/[controller]")]
@@ -11,7 +13,6 @@ using System.Net.Http;
 public class EventController : ControllerBase
 {
     private readonly IMediator _mediator;
-    private static List<UserEvent> _userEvents = new();
     private const int Capacity = 50;
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly EventDbContext _context;
@@ -23,9 +24,18 @@ public class EventController : ControllerBase
         _context = context;
     }
 
+    [Authorize]
     [HttpPost("create")]
     public async Task<IActionResult> Create(CreateEventCommand command)
     {
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!Guid.TryParse(userIdString, out var userId))
+        {
+            return Unauthorized("Geçersiz kullanıcı kimliği.");
+        }
+
+        command.CreatorUserId = userId;
+
         await _mediator.Send(command);
         return Ok("Etkinlik başarıyla oluşturuldu.");
     }
@@ -33,7 +43,24 @@ public class EventController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        await _mediator.Send(new DeleteEventCommand { Id = id });
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+       
+        if (!Guid.TryParse(userIdString, out var userId))
+        {
+            return Unauthorized("Kullanıcı bulunamadı");
+        }
+
+        var command = new DeleteEventCommand
+        {
+            EventId = id,
+            RequestingUserId = userId
+        };
+
+        var result = await _mediator.Send(command);
+        if (!result)
+        {
+            return Forbid("Bu etkinliği silmeye yetkiniz yok!");
+        }
         return Ok("Etkinlik silindi.");
     }
 
@@ -74,15 +101,19 @@ public class EventController : ControllerBase
         return Ok(result);
     }
 
+    [Authorize]
     [HttpPost("register-to-event")]
-    public async Task<IActionResult> RegisterToEvent(Guid userId, Guid eventId){
+    public async Task<IActionResult> RegisterToEvent(Guid eventId){
         var client = _httpClientFactory.CreateClient();
+        var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
         var response = await client.GetAsync($"http://localhost:5020/api/User/{userId}");
-        var user = await response.Content.ReadFromJsonAsync<User>();
+
 
         if(!response.IsSuccessStatusCode){
             return NotFound("Kullanıcı bulunamadı");
         }
+
+        var user = await response.Content.ReadFromJsonAsync<User>();
 
         var eventEntity = await _mediator.Send(new GetEventByIdQuery {Id = eventId});
         if(eventEntity == null){

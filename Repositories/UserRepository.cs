@@ -9,9 +9,9 @@ public class UserRepository : IUserRepository
     public UserRepository(EventDbContext context){
         _context = context;
     }
-    public async Task<User> GetUserByIDAsync(Guid id)
+    public async Task<User> GetUserByMailAsync(string mail)
     {
-        return await _context.Users.FindAsync(id);
+        return await _context.Users.FirstOrDefaultAsync(u => u.Mail == mail);
     }
 
     public async Task<User> LoginUser(string mail, string password)
